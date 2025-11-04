@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import { executeCode, submitCode } from '../api'; // Importa nossa API adaptada
+import toast from 'react-hot-toast';
 
 // Este hook substitui a lógica do 'tester.js'
 const useSubmit = () => {

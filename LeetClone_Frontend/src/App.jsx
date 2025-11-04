@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import UserStat from "./pages/UserStat"; // 1. Importe a nova página
-import Navbar from "./components/Navbar"; // 2. Importe o Navbar
+import Navbar from "./componentes/Navbar"; // 2. Importe o Navbar
 import { useAuthContext } from './context/AuthContext';
 
 function App() {
