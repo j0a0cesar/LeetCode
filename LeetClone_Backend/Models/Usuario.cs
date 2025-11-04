@@ -11,7 +11,6 @@ namespace LeetClone_Backend.Models
         public string NomeCompleto { get; set; } 
         public string Username { get; set; } 
         public string Senha { get; set; }
-
         public string Genero { get; set; }
     }
 }
