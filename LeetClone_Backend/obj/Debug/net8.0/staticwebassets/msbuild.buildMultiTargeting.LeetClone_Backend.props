@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\LeetClone_Backend.props" />
+</Project>
