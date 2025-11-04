@@ -8,7 +8,6 @@ const useLogin = () => {
 
     const login = async (nomeUsuario, senha) => {
         
-        // Validação simples
         if (!nomeUsuario || !senha) {
             toast.error("Por favor, preencha todos os campos.");
             return;
@@ -16,18 +15,16 @@ const useLogin = () => {
 
         setLoading(true);
         try {
-            
+            // Chama o backend
             const res = await fetch("/api/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                // Enviamos os dados 
                 body: JSON.stringify({ nomeUsuario, senha }), 
             });
 
             const data = await res.json();
             
             if (!res.ok) {
-                 // Mostra o erro 
                  throw new Error(data.message || data.title || "Erro ao fazer login");
             }
 

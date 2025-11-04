@@ -1,6 +1,7 @@
 import React from 'react';
-import list from '../assets/list.svg';
-import tags from '../assets/tags.svg';
+//add dps
+//import list from '../assets/list.svg';
+//import tags from '../assets/tags.svg';
 
 // Recebe 'problems' (da API) e 'onProblemSelect' (função) da Home.jsx
 const ProblemBar = ({ problems, onProblemSelect }) => {

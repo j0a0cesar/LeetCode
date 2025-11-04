@@ -1,123 +1,37 @@
-import { useState, useEffect } from 'react'; 
+import './App.css'
+import { Navigate, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import UserStat from "./pages/UserStat"; // 1. Importe a nova página
+import Navbar from "./components/Navbar"; // 2. Importe o Navbar
+import { useAuthContext } from './context/AuthContext';
 
-import './App.css'; // Opcional 
+function App() {
+  const { authUser } = useAuthContext();
 
- 
+  return (
+    // 3. Modificamos a estrutura para ter o Navbar no topo
+    <div className='h-screen flex flex-col'>
+      {/* O Navbar agora é renderizado em todas as páginas */}
+      <Navbar /> 
+      
+      {/* O conteúdo da página é renderizado abaixo do Navbar */}
+      <div className='flex-1 p-4 flex items-center justify-center bg-gray-100'>
+        <Routes>
+          {/* A Home (/) é protegida */}
+          <Route path='/' element={authUser ? <Home /> : <Navigate to={"/login"} />} />
+          
+          {/* A página de estatísticas (/user-stat) também é protegida */}
+          <Route path='/user-stat' element={authUser ? <UserStat /> : <Navigate to={"/login"} />} />
 
-function App() { 
+          {/* Login e SignUp só aparecem se o usuário NÃO estiver logado */}
+          <Route path='/login' element={authUser ? <Navigate to='/' /> : <Login />} />
+          <Route path='/signup' element={authUser ? <Navigate to='/' /> : <SignUp />} />
+        </Routes>
+      </div>
+    </div>
+  )
+}
 
-  // (Aula 13) Cria estados para guardar os problemas e os erros 
-
-  const [problems, setProblems] = useState([]); // Começa como um array vazio 
-
-  const [error, setError] = useState(null); // Começa como nulo 
-
- 
-
-  // (Aula 13) URL da sua API Backend .NET 
-
-  
-
-  const API_URL = "http://localhost:5178/api/problems"; 
-
- 
-
-  // (Aula 13) useEffect roda quando o componente carrega 
-
-  useEffect(() => { 
-
-    // (Aula 13) Define a função assíncrona para buscar dados 
-
-    const getProblems = async () => { 
-
-      try { 
-
-        // (Aula 11/13) Faz a requisição fetch 
-
-        const response = await fetch(API_URL); 
-
- 
-
-        // (Aula 11/13) Se a resposta não for OK, lança um erro 
-
-        if (!response.ok) { 
-
-          throw new Error('Erro ao buscar dados da API'); 
-
-        } 
-
- 
-
-        // (Aula 11/13) Converte a resposta para JSON 
-
-        const data = await response.json(); 
-
- 
-
-        // (Aula 13) Atualiza o estado 'problems' com os dados recebidos 
-
-        setProblems(data); 
-
-      } catch (err) { 
-
-        // (Aula 13) Se der erro, atualiza o estado 'error' 
-
-        setError(err.message); 
-
-      } 
-
-    }; 
-
- 
-
-    getProblems(); // Chama a função 
-
-  }, []); // O array vazio faz o useEffect rodar só uma vez 
-
- 
-
-  // (Aula 13) Renderiza o JSX (HTML no React) 
-
-  return ( 
-
-    <div> 
-
-      <h1>Meu Clone do LeetCode</h1> 
-
- 
-
-      {/* (Aula 13) Se houver erro */} 
-
-      {error && <p style={{ color: 'red' }}>{error}</p>} 
-
- 
-
-      {/* (Aula 13) Cria a lista <ul> */} 
-
-      <ul> 
-
-        {/* (Aula 13) Usa .map() para iterar sobre os problemas */} 
-
-        {problems.map((problem) => ( 
-
-          // 'key' é obrigatório no React para listas  
-
-          <li key={problem.id}>  
-
-            {problem.title} ({problem.difficulty}) 
-
-          </li> 
-
-        ))} 
-
-      </ul> 
-
-    </div> 
-
-  ); 
-
-} 
-
- 
-
-export default App; 
+export default App

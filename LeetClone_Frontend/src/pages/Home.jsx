@@ -1,98 +1,57 @@
-import React, { useState, useEffect } from 'react';
-import ProblemBar from '../components/ProblemBar';
-import ProblemDesc from '../components/ProblemDesc';
-import CodeSpace from '../components/CodeSpace';
-import TestSpace from '../components/TestSpace';
+import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 
 const Home = () => {
-    const [allProblems, setAllProblems] = useState([]); // Guarda todos os problemas
-    const [selectedProblem, setSelectedProblem] = useState(null); // Guarda o problema clicado
+    const [problems, setProblems] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // (Aula 13) Busca todos os problemas da API quando a página carrega
+    // (Aula 13) Busca os problemas da API
     useEffect(() => {
         const fetchProblems = async () => {
             setLoading(true);
             try {
-                // Chama o endpoint GET /api/problemas do backend
+                // Chama o backend
                 const res = await fetch('/api/problemas'); 
                 if (!res.ok) throw new Error("Não foi possível carregar os problemas");
                 const data = await res.json();
-                setAllProblems(data); // Salva a lista de problemas no estado
+                setProblems(data); // Salva no estado
             } catch (error) {
                 toast.error(error.message);
             } finally {
                 setLoading(false);
             }
         };
-
         fetchProblems();
-    }, []); // O array vazio [] faz isso rodar só uma vez
-
-    // Função chamada pelo ProblemBar quando um problema é clicado
-    const handleProblemSelect = async (problemId) => {
-        try {
-            // Busca os detalhes completos do problema (incluindo casos de teste)
-            const res = await fetch(`/api/problemas/${problemId}`);
-            if (!res.ok) throw new Error("Não foi possível carregar o problema");
-            const data = await res.json();
-            setSelectedProblem(data); // Atualiza o estado
-        } catch (error) {
-            toast.error(error.message);
-        }
-    };
-
-    // (Esta função será usada pelo CodeSpace)
-    const handleCodeSubmit = async (codigo, linguagem) => {
-        if (!selectedProblem) {
-            toast.error("Selecione um problema primeiro.");
-            return;
-        }
-
-        // Lógica de POST /api/envios viria aqui
-        // Por enquanto, apenas mostramos no console
-        console.log("Código enviado:", {
-            problemaId: selectedProblem.id,
-            codigo,
-            linguagem,
-        });
-
-        toast.success("Código enviado para avaliação!");
-    };
-
+    }, []);
 
     if (loading) {
         return <div className="text-center p-10">Carregando problemas...</div>;
     }
 
+    // Renderiza a lista de problemas
     return (
-        <div className='flex h-[calc(100vh-64px)]'>
-            {/* Passa a lista de problemas e a função de clique */}
-            <ProblemBar 
-                problems={allProblems} 
-                onProblemSelect={handleProblemSelect} 
-            />
-
-            {/* O restante da UI depende do problema selecionado */}
-            {!selectedProblem ? (
-                <div className="flex-1 flex items-center justify-center text-gray-500">
-                    Selecione um problema na lista para começar.
-                </div>
-            ) : (
-                <>
-                    <ProblemDesc problem={selectedProblem} />
-                    <div className='flex flex-col w-1/2'>
-                        <CodeSpace 
-                            problem={selectedProblem} 
-                            onSubmit={handleCodeSubmit} 
-                        />
-                        <TestSpace 
-                            problem={selectedProblem} 
-                        />
-                    </div>
-                </>
-            )}
+        <div className='container mx-auto p-4'>
+            <h1 className='text-3xl font-bold mb-4'>Lista de Problemas</h1>
+            <div className='bg-white shadow-md rounded-lg'>
+                <table className='min-w-full divide-y divide-gray-200'>
+                    <thead className='bg-gray-50'>
+                        <tr>
+                            <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Título</th>
+                            <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Dificuldade</th>
+                            <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody className='bg-white divide-y divide-gray-200'>
+                        {problems.map((problem) => (
+                            <tr key={problem.id} className='hover:bg-gray-50'>
+                                <td className='px-6 py-4 whitespace-nowrap'>{problem.titulo}</td>
+                                <td className='px-6 py-4 whitespace-nowrap'>{problem.dificuldade}</td>
+                                <td className='px-6 py-4'>{problem.descricao}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

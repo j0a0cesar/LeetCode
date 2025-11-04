@@ -10,7 +10,7 @@ namespace LeetClone_Backend.Models
     public int Id { get; set; }
     public string UserCode { get; set; }
     public string Status { get; set; } // Ex: "Aceito", "Errado", "Erro de Compilação"
-    public DateTime EnvioData  { get; set; }
+    public DateTime DataEnvio  { get; set; }
 
     public int ProblemId { get; set; } // Chave estrangeira
     public Problema Problema { get; set; } 
