@@ -19,8 +19,12 @@ const useLogin = () => {
             const res = await fetch("/api/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ nomeUsuario, senha }), 
+                body: JSON.stringify({
+                    Username: nomeUsuario, // <-- Alterado de nomeUsuario
+                    Senha: senha
+                }),
             });
+            //
 
             const data = await res.json();
             

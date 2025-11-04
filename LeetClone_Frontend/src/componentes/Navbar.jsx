@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
 import UseLogout from '../hooks/UseLogout'; // O hook que criamos
 
-// SVGs (ícones) add dps
+// SVGs (ícones) add dps mudei para  ?url assim como IA sugeriu OU USAR  vite-plugin-svgr --save-dev
 import list from '../assets/list.svg';
 import next from '../assets/next.svg';
 import prev from '../assets/prev.svg';

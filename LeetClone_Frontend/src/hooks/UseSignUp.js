@@ -5,8 +5,8 @@ import toast from "react-hot-toast";
 const useSignUp = () => {
     const [loading, setLoading] = useState(false);
     const { setAuthUser } = useAuthContext();
-
-    const signup = async ({ nomeCompleto, nomeUsuario, senha, confirmaSenha, genero }) => {
+    //nomeUsuario
+    const signup = async ({ nomeCompleto, nomeUsuario , senha, confirmaSenha, genero }) => {
         const success = handleInputErrors({ nomeCompleto, nomeUsuario, senha, confirmaSenha, genero });
         if (!success) return;
 
@@ -16,7 +16,14 @@ const useSignUp = () => {
             const res = await fetch("/api/auth/signup", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ nomeCompleto, nomeUsuario, senha, genero }), 
+                // src/hooks/UseSignUp.js
+
+                body: JSON.stringify({
+                    NomeCompleto: nomeCompleto,
+                    Username: nomeUsuario, // <-- Alterado de nomeUsuario
+                    Senha: senha,
+                    Genero: genero
+                }),
             });
 
             const data = await res.json();
