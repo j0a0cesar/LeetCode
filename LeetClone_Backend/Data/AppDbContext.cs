@@ -7,7 +7,7 @@ namespace LeetClone_Backend.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<Problema> Problems { get; set; }
+        public DbSet<Problema> Problemas { get; set; }
         public DbSet<TestCase> TestCases { get; set; }
         public DbSet<Envio> Envios { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }

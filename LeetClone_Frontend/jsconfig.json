@@ -1,0 +1,12 @@
+//Add para arrumar erro da minha maquina com ajuda do gemini
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "checkJs": true,
+    // --- Correções para os erros ---
+    "noImplicitAny": false,           // Corrige: Parameter '...' implicitly has an 'any' type.
+    "useUnknownInCatchVariables": false // Corrige: 'error' is of type 'unknown'.
+  },
+  "include": ["src"]
+}
