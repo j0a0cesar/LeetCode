@@ -1,77 +1,44 @@
 import React from 'react';
+import next from '../assets/next.svg';
+import prev from '../assets/prev.svg';
 
+// Recebe o problema selecionado da Home.jsx
 const ProblemDesc = ({ problem }) => {
     
-    if (!problem) {
-        return (
-            <div className='w-1-4 h-full bg-white p-6 border-r border-gray-200 flex items-center justify-center'>
-                <p className='text-gray-500'>Selecione um problema</p>
-            </div>
-        );
-    }
-
-    const getDifficultyClass = (difficulty) => {
-        switch (difficulty?.toLowerCase()) {
-            case 'easy':
-            case 'fácil':
-                return 'difficulty-easy';
-            case 'medium':
-            case 'médio':
-                return 'difficulty-medium';
-            case 'hard':
-            case 'difícil':
-                return 'difficulty-hard';
-            default:
-                return 'difficulty-medium';
-        }
-    };
+    if (!problem) return null; // Não renderiza nada se nenhum problema for selecionado
 
     return (
-        <div className='w-1-4 h-full overflow-y-auto bg-white border-r border-gray-200 animate-fade-in'>
-            <div className='p-6'>
-                {/* Cabeçalho do problema */}
-                <div className='mb-6'>
-                    <h2 className='text-2xl font-bold text-gray-800 mb-3'>
-                        {problem.titulo}
-                    </h2>
-                    <span className={`difficulty-badge ${getDifficultyClass(problem.dificuldade)}`}>
-                        {problem.dificuldade}
-                    </span>
-                </div>
+        <div className='w-1/4 h-full overflow-y-auto bg-white p-6 border-r border-gray-200'>
+            <div className='flex justify-between items-center mb-4'>
+                {/* ... (botões de navegação) ... */}
+                <h2 className='text-xl font-semibold text-gray-800'>{problem.titulo}</h2>
+                {/* ... */}
+            </div>
 
-                {/* Descrição */}
-                <div className='mb-6'>
-                    <h3 className='text-sm font-semibold text-gray-600 uppercase mb-2 tracking-wide'>
-                        Descrição
-                    </h3>
-                    <div className='text-gray-700 leading-relaxed'>
-                        <p>{problem.descricao}</p>
-                    </div>
-                </div>
+            <div className='mb-4'>
+                <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                    problem.dificuldade?.toLowerCase() === 'fácil' ? 'bg-green-100 text-green-700' :
+                    problem.dificuldade?.toLowerCase() === 'médio' ? 'bg-yellow-100 text-yellow-700' :
+                    'bg-red-100 text-red-700'
+                }`}>
+                    {problem.dificuldade}
+                </span>
+            </div>
 
-                {/* Casos de Teste como Exemplos */}
-                {problem.testCases && problem.testCases.length > 0 && (
-                    <div>
-                        <h3 className='text-sm font-semibold text-gray-600 uppercase mb-3 tracking-wide'>
-                            Exemplos
-                        </h3>
-                        {problem.testCases.map((tc, index) => (
-                            <div key={tc.id || index} className='test-case mb-3'>
-                                <div className='mb-2'>
-                                    <span className='text-xs font-semibold text-gray-600 uppercase'>
-                                        Exemplo {index + 1}
-                                    </span>
-                                </div>
-                                <div className='test-case-input mb-1'>
-                                    <strong>Entrada:</strong> {tc.input}
-                                </div>
-                                <div className='test-case-output'>
-                                    <strong>Saída:</strong> {tc.output}
-                                </div>
-                            </div>
-                        ))}
+            {/* Mostra a descrição vinda da API */}
+            <div className='text-gray-700 leading-relaxed'>
+                <p>{problem.descricao}</p>
+            </div>
+
+            {/* Mostra os Casos de Teste como exemplos */}
+            <div className='mt-6'>
+                <h3 className='font-semibold mb-2'>Exemplos:</h3>
+                {problem.testCases && problem.testCases.map((tc, index) => (
+                    <div key={tc.id || index} className='bg-gray-50 p-3 rounded mb-2'>
+                        <p className='font-mono'><strong>Entrada:</strong> {tc.input}</p>
+                        <p className='font-mono'><strong>Saída:</strong> {tc.output}</p>
                     </div>
-                )}
+                ))}
             </div>
         </div>
     );
