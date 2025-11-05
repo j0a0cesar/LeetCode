@@ -15,24 +15,23 @@ const useLogin = () => {
 
         setLoading(true);
         try {
-            // Chama o backend
             const res = await fetch("/api/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    Username: nomeUsuario, // <-- Alterado de nomeUsuario
-                    Senha: senha
+                    username: nomeUsuario,
+                    senha: senha
                 }),
             });
-            //
 
             const data = await res.json();
             
             if (!res.ok) {
-                 throw new Error(data.message || data.title || "Erro ao fazer login");
+                throw new Error(data.message || data.title || "Erro ao fazer login");
             }
 
-            // Salva o usuário no localStorage e no contexto
+            // O backend agora retorna: { token, userId, nomeUsuario, nomeCompleto }
+            // Salvamos tudo no localStorage
             localStorage.setItem("leetcode-user", JSON.stringify(data));
             setAuthUser(data);
             toast.success("Login realizado com sucesso!");
