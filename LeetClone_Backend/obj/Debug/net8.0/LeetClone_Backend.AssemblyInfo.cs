@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LeetClone_Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e5cc30b9c2fd3a68fb14e491d6d3b107610c6e3e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+714555fca87bd739c93e4340ba9b6a62ba132fbd")]
 [assembly: System.Reflection.AssemblyProductAttribute("LeetClone_Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LeetClone_Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
