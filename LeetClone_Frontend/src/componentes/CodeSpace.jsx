@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import LanguageSelector from './LanguageSelector'; // Criaremos este
+import LanguageSelector from './LanguageSelector'; 
 import { CODE_SNIPPETS } from '../constant.js'; // O arquivo que transformamos
 import useSubmit from '../hooks/UseSubmit';// O hook que transformamos
 // (Nota: O editor de código real @monaco-editor/react precisaria ser instalado)

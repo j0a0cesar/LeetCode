@@ -10,17 +10,17 @@ export const executeCode = async (language, code, testCases) => {
     return { success: true, output: "Executado com sucesso (simulado)." };
 };
 
-// 2. SUBMIT CODE - CORRIGIDO
+// 2. SUBMIT CODE -
 export const submitCode = async (problemaId, usuarioId, linguagem, codigo) => {
     try {
         const res = await fetch("/api/envios", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                ProblemaId: problemaId,      // ✅ PascalCase para o backend
-                UsuarioId: usuarioId,        // ✅ PascalCase
-                Linguagem: linguagem,        // ✅ PascalCase
-                UserCode: codigo,            // ✅ CORRIGIDO: "UserCode" em vez de "codigo"
+                ProblemaId: problemaId,      
+                UsuarioId: usuarioId,        
+                Linguagem: linguagem,        
+                UserCode: codigo,            
             }),
         });
 

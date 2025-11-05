@@ -9,7 +9,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /* Cores principais do projeto (mantive as suas para compatibilidade) */
+  /* Cores principais do projeto */
   --color-primary: #3b82f6;
   --color-primary-dark: #2563eb;
   --color-success: #10b981;
@@ -26,8 +26,8 @@
   --focus: rgba(59,130,246,0.35);   /* anel de foco */
   --shadow: 0 10px 30px rgba(0,0,0,0.6);
 
-  /* ===== Aliases antigos (mantidos para não quebrar) ===== */
-  --bg-dark: #1f2937;     /* NÃO usado no layout principal, mas mantido */
+  /* ===== Aliases antigos  ===== */
+  --bg-dark: #1f2937;     /* NÃO usado no layout principal */
   --bg-darker: #111827;   /* idem */
   --bg-light: #000000;    /* era claro; agora redireciono p/ dark */
   --bg-white: #0e0e0e;    /* “white” vira card dark para compatibilidade */

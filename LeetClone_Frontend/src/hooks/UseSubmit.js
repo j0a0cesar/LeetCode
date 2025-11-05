@@ -15,7 +15,7 @@ const useSubmit = () => {
         try {
             // Chama a simulação
             await executeCode(language, code, testCases);
-            // Aqui você poderia atualizar um estado de "Output" se quisesse
+            
         } catch (error) {
             console.error(error);
         } finally {

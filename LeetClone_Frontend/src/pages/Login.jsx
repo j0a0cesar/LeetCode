@@ -1,12 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import UseLogin from '../hooks/UseLogin' // Corrigido para UseLogin
+import UseLogin from '../hooks/UseLogin' 
 
 const Login = () => {
   const [username,setusername]=useState('');
   const [password, setpassword] = useState('')
-  const {loading , login}=UseLogin(); // Corrigido para UseLogin
+  const {loading , login}=UseLogin(); 
   
   const handleSubmit=async(e)=>{
    e.preventDefault();    

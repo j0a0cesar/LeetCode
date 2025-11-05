@@ -41,7 +41,7 @@ const Navbar = () => {
                             className='font-medium hover-text-blue-300'
                             onClick={handleStatClick}
                         >
-                            Olá, {authUser.nomeUsuario}
+                            PERFIL {authUser.nomeUsuario}
                         </button>
                         
                         <button 
