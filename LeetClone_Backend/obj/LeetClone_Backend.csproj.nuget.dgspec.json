@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jgabr\\Documents\\LeetCode\\LeetClone_Backend\\LeetClone_Backend.csproj": {}
+    "C:\\Users\\jcpad\\OneDrive\\Documentos\\GitHub\\LeetCode\\LeetClone_Backend\\LeetClone_Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jgabr\\Documents\\LeetCode\\LeetClone_Backend\\LeetClone_Backend.csproj": {
+    "C:\\Users\\jcpad\\OneDrive\\Documentos\\GitHub\\LeetCode\\LeetClone_Backend\\LeetClone_Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jgabr\\Documents\\LeetCode\\LeetClone_Backend\\LeetClone_Backend.csproj",
+        "projectUniqueName": "C:\\Users\\jcpad\\OneDrive\\Documentos\\GitHub\\LeetCode\\LeetClone_Backend\\LeetClone_Backend.csproj",
         "projectName": "LeetClone_Backend",
-        "projectPath": "C:\\Users\\jgabr\\Documents\\LeetCode\\LeetClone_Backend\\LeetClone_Backend.csproj",
-        "packagesPath": "C:\\Users\\jgabr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jgabr\\Documents\\LeetCode\\LeetClone_Backend\\obj\\",
+        "projectPath": "C:\\Users\\jcpad\\OneDrive\\Documentos\\GitHub\\LeetCode\\LeetClone_Backend\\LeetClone_Backend.csproj",
+        "packagesPath": "C:\\Users\\jcpad\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jcpad\\OneDrive\\Documentos\\GitHub\\LeetCode\\LeetClone_Backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jgabr\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\jcpad\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -43,6 +43,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.0, )"
@@ -60,6 +68,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[9.0.6, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.1.2, )"
             }
           },
           "imports": [
@@ -81,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.414/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.413/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
