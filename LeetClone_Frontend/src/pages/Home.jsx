@@ -1,20 +1,29 @@
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
+import ProblemBar from '../componentes/ProblemBar';
+import ProblemDesc from '../componentes/ProblemDesc';
+import CodeSpace from '../componentes/CodeSpace';
+import TestSpace from '../componentes/TestSpace';
 
 const Home = () => {
     const [problems, setProblems] = useState([]);
+    const [selectedProblem, setSelectedProblem] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    // (Aula 13) Busca os problemas da API
+    // Busca todos os problemas da API
     useEffect(() => {
         const fetchProblems = async () => {
             setLoading(true);
             try {
-                // Chama o backend
                 const res = await fetch('/api/problemas'); 
                 if (!res.ok) throw new Error("Não foi possível carregar os problemas");
                 const data = await res.json();
-                setProblems(data); // Salva no estado
+                setProblems(data);
+                
+                // Seleciona o primeiro problema automaticamente
+                if (data.length > 0) {
+                    fetchProblemDetails(data[0].id);
+                }
             } catch (error) {
                 toast.error(error.message);
             } finally {
@@ -24,33 +33,59 @@ const Home = () => {
         fetchProblems();
     }, []);
 
+    // Busca os detalhes de um problema específico (incluindo Test Cases)
+    const fetchProblemDetails = async (problemId) => {
+        try {
+            const res = await fetch(`/api/problemas/${problemId}`);
+            if (!res.ok) throw new Error("Não foi possível carregar o problema");
+            const data = await res.json();
+            setSelectedProblem(data);
+        } catch (error) {
+            toast.error(error.message);
+        }
+    };
+
+    // Função chamada quando um problema é clicado na ProblemBar
+    const handleProblemSelect = (problemId) => {
+        fetchProblemDetails(problemId);
+    };
+
     if (loading) {
-        return <div className="text-center p-10">Carregando problemas...</div>;
+        return (
+            <div className="flex items-center justify-center h-screen">
+                <span className="loading loading-spinner loading-lg"></span>
+            </div>
+        );
     }
 
-    // Renderiza a lista de problemas
     return (
-        <div className='container mx-auto p-4'>
-            <h1 className='text-3xl font-bold mb-4'>Lista de Problemas</h1>
-            <div className='bg-white shadow-md rounded-lg'>
-                <table className='min-w-full divide-y divide-gray-200'>
-                    <thead className='bg-gray-50'>
-                        <tr>
-                            <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Título</th>
-                            <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Dificuldade</th>
-                            <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>Descrição</th>
-                        </tr>
-                    </thead>
-                    <tbody className='bg-white divide-y divide-gray-200'>
-                        {problems.map((problem) => (
-                            <tr key={problem.id} className='hover:bg-gray-50'>
-                                <td className='px-6 py-4 whitespace-nowrap'>{problem.titulo}</td>
-                                <td className='px-6 py-4 whitespace-nowrap'>{problem.dificuldade}</td>
-                                <td className='px-6 py-4'>{problem.descricao}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+        <div className='flex h-screen overflow-hidden'>
+            {/* 1. Barra lateral com lista de problemas */}
+            <ProblemBar 
+                problems={problems} 
+                onProblemSelect={handleProblemSelect} 
+            />
+
+            {/* 2. Descrição do problema selecionado */}
+            {selectedProblem && (
+                <ProblemDesc problem={selectedProblem} />
+            )}
+
+            {/* 3. Área de código e testes */}
+            <div className='flex-1 flex flex-col'>
+                {selectedProblem ? (
+                    <>
+                        {/* Editor de código */}
+                        <CodeSpace problem={selectedProblem} />
+                        
+                        {/* Área de Test Cases e Submissões */}
+                        <TestSpace problem={selectedProblem} />
+                    </>
+                ) : (
+                    <div className='flex items-center justify-center h-full text-gray-500'>
+                        Selecione um problema para começar
+                    </div>
+                )}
             </div>
         </div>
     );

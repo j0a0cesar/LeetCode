@@ -4,8 +4,8 @@ import { CODE_SNIPPETS } from '../constant.js'; // O arquivo que transformamos
 import useSubmit from '../hooks/UseSubmit';// O hook que transformamos
 // (Nota: O editor de código real @monaco-editor/react precisaria ser instalado)
 // npm install @monaco-editor/react
-
-const CodeSpace = ({ problem, onSubmit }) => {
+// tecnicamente não estamos ultilizando
+const CodeSpace = ({ problem }) => {
     const [language, setLanguage] = useState("javascript");
     const [code, setCode] = useState(CODE_SNIPPETS["javascript"]);
     
