@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
-import UseLogout from '../hooks/UseLogout'; // O hook que criamos
+import UseLogout from '../hooks/UseLogout';
 
 // SVGs (ícones) add dps mudei para  ?url assim como IA sugeriu OU USAR  vite-plugin-svgr --save-dev
 import list from '../assets/list.svg';
@@ -38,7 +38,7 @@ const Navbar = () => {
                     <>
                         {/* Botão que leva para a página de estatísticas */}
                         <button 
-                            className='font-medium hover-text-blue-300'
+                            className='font-medium hover:text-blue-300'
                             onClick={handleStatClick}
                         >
                             PERFIL {authUser.nomeUsuario}
@@ -53,9 +53,14 @@ const Navbar = () => {
                         </button>
                     </>
                 ) : (
-                    <Link to="/login" className='btn btn-sm btn-primary'>
-                        Login
-                    </Link>
+                    <div className="flex items-center gap-2">
+                        <Link to="/login" className='btn btn-sm btn-primary'>
+                            Login
+                        </Link>
+                        <Link to="/signup" className='btn btn-sm btn-secondary'>
+                            Sign up
+                        </Link>
+                    </div>
                 )}
             </div>
         </nav>
