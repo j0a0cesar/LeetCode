@@ -38,7 +38,7 @@ const Navbar = () => {
                     <>
                         {/* Botão que leva para a página de estatísticas */}
                         <button 
-                            className='font-medium hover:text-blue-300'
+                            className='font-medium hover-text-blue-300'
                             onClick={handleStatClick}
                         >
                             Olá, {authUser.nomeUsuario}

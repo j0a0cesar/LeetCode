@@ -30,6 +30,25 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
+//1.1 Seeder recomendado por IA para resolver problema de "colocar" DB ja feito 
+
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    
+    // Cria o banco se não existir
+    await context.Database.EnsureCreatedAsync();
+    
+    // Caminho para o arquivo JSON
+    var jsonPath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "CodeDB_problemas.json");
+    
+    // Importa os dados
+    await JsonSeeder.SeedFromJson(context, jsonPath);
+}
+
+
+
+
 // --- 2. Configurar o Pipeline ---
 
 if (app.Environment.IsDevelopment())

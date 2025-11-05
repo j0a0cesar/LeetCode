@@ -197,3 +197,4 @@ C:\Users\jgabr\Documents\LeetCode\LeetClone_Backend\obj\Debug\net8.0\refint\Leet
 C:\Users\jgabr\Documents\LeetCode\LeetClone_Backend\obj\Debug\net8.0\LeetClone_Backend.pdb
 C:\Users\jgabr\Documents\LeetCode\LeetClone_Backend\obj\Debug\net8.0\LeetClone_Backend.genruntimeconfig.cache
 C:\Users\jgabr\Documents\LeetCode\LeetClone_Backend\obj\Debug\net8.0\ref\LeetClone_Backend.dll
+C:\Users\jgabr\Documents\LeetCode\LeetClone_Backend\bin\Debug\net8.0\Data\CodeDB_problemas.json

@@ -48,7 +48,7 @@ const ProblemBar = ({ problems, onProblemSelect }) => {
                             key={problem.id} 
                             // Chama a função da Home ao clicar
                             onClick={() => onProblemSelect(problem.id)}
-                            className='border-b border-gray-100 hover:bg-gray-50 cursor-pointer'
+                            className='border-b border-gray-100 hover-bg-gray-50 cursor-pointer'
                         >
                             {/* Usa 'titulo' e 'dificuldade' do seu modelo .NET */}
                             <td className='p-4 text-gray-800'>{problem.titulo}</td>
