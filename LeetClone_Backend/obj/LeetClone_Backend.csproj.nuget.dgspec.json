@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jcpad\\OneDrive\\Documentos\\GitHub\\LeetCode\\LeetClone_Backend\\LeetClone_Backend.csproj": {}
+    "C:\\Users\\jgabr\\Documents\\LeetCode\\LeetClone_Backend\\LeetClone_Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jcpad\\OneDrive\\Documentos\\GitHub\\LeetCode\\LeetClone_Backend\\LeetClone_Backend.csproj": {
+    "C:\\Users\\jgabr\\Documents\\LeetCode\\LeetClone_Backend\\LeetClone_Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jcpad\\OneDrive\\Documentos\\GitHub\\LeetCode\\LeetClone_Backend\\LeetClone_Backend.csproj",
+        "projectUniqueName": "C:\\Users\\jgabr\\Documents\\LeetCode\\LeetClone_Backend\\LeetClone_Backend.csproj",
         "projectName": "LeetClone_Backend",
-        "projectPath": "C:\\Users\\jcpad\\OneDrive\\Documentos\\GitHub\\LeetCode\\LeetClone_Backend\\LeetClone_Backend.csproj",
-        "packagesPath": "C:\\Users\\jcpad\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jcpad\\OneDrive\\Documentos\\GitHub\\LeetCode\\LeetClone_Backend\\obj\\",
+        "projectPath": "C:\\Users\\jgabr\\Documents\\LeetCode\\LeetClone_Backend\\LeetClone_Backend.csproj",
+        "packagesPath": "C:\\Users\\jgabr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jgabr\\Documents\\LeetCode\\LeetClone_Backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jcpad\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\jgabr\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -93,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.413/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.414/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
