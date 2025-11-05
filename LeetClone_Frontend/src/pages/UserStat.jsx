@@ -52,8 +52,8 @@ const UserStat = () => {
                     <tbody className='bg-white divide-y divide-gray-200'>
                         {submissions.length === 0 ? (
                             <tr>
-                                <td colSpan="4" className='px-6 py-4 text-center text-gray-500'>
-                                    Nenhuma submissão encontrada.
+                                <td colSpan={4} className='td-empty'>
+                                 Nenhuma submissão encontrada.
                                 </td>
                             </tr>
                         ) : (
