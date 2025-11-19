@@ -5,14 +5,13 @@ Clone do LeetCode para prática de programação e preparação para entrevistas
 
 ## 🚀 Tecnologias
 - React + Vite
-- Tailwind CSS
 - DaisyUI
 - React Router DOM
 - Context API
 
 ## 🛠️ Pré-requisitos
 - Node.js (versão 14+)
-- npm ou yarn
+- npm
 
 ## ⚙️ Instalação
 
@@ -34,8 +33,7 @@ yarn install
 ```bash
 # Modo desenvolvimento
 npm run dev
-# ou
-yarn dev
+
 ```
 
 Acesse `http://localhost:5173`
